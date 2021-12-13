@@ -26,30 +26,107 @@ public class PageAccueil_S extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        titre1 = new javax.swing.JLabel();
+        titre2 = new javax.swing.JLabel();
+        txtPAId = new javax.swing.JTextField();
+        titre3 = new javax.swing.JLabel();
+        txtPAMdp = new javax.swing.JTextField();
+        btnPAConnecter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Si tu voix ca, ca ve dire qui le projet fonctionne.");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        titre1.setBackground(new java.awt.Color(255, 51, 51));
+        titre1.setFont(new java.awt.Font("New Peninim MT", 1, 48)); // NOI18N
+        titre1.setForeground(new java.awt.Color(102, 102, 255));
+        titre1.setToolTipText("");
+
+        titre2.setBackground(new java.awt.Color(255, 51, 51));
+        titre2.setFont(new java.awt.Font("New Peninim MT", 1, 190)); // NOI18N
+        titre2.setText("GSB");
+        titre2.setToolTipText("");
+
+        txtPAId.setBackground(new java.awt.Color(204, 204, 204));
+        txtPAId.setFont(new java.awt.Font("Rockwell", 0, 36)); // NOI18N
+        txtPAId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPAId.setText("Identifiant");
+
+        titre3.setBackground(new java.awt.Color(255, 51, 51));
+        titre3.setFont(new java.awt.Font("New Peninim MT", 1, 190)); // NOI18N
+        titre3.setForeground(new java.awt.Color(102, 0, 102));
+        titre3.setText(".");
+        titre3.setToolTipText("");
+
+        txtPAMdp.setBackground(new java.awt.Color(204, 204, 204));
+        txtPAMdp.setFont(new java.awt.Font("Rockwell", 0, 36)); // NOI18N
+        txtPAMdp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPAMdp.setText("Mot de Passe");
+
+        btnPAConnecter.setBackground(new java.awt.Color(0, 0, 0));
+        btnPAConnecter.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
+        btnPAConnecter.setForeground(new java.awt.Color(255, 255, 255));
+        btnPAConnecter.setText("Se Connecter");
+        btnPAConnecter.setToolTipText("");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(titre1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2109, 2109, 2109))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(204, 204, 204)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtPAMdp, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                            .addComponent(txtPAId)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(156, 156, 156)
+                        .addComponent(titre2, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(titre3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(282, 282, 282)
+                        .addComponent(btnPAConnecter, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(titre1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titre2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titre3, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtPAId, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtPAMdp, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnPAConnecter, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(227, 227, 227)
-                .addComponent(jLabel1)
-                .addContainerGap(128, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addComponent(jLabel1)
-                .addContainerGap(308, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -89,6 +166,12 @@ public class PageAccueil_S extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnPAConnecter;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel titre1;
+    private javax.swing.JLabel titre2;
+    private javax.swing.JLabel titre3;
+    private javax.swing.JTextField txtPAId;
+    private javax.swing.JTextField txtPAMdp;
     // End of variables declaration//GEN-END:variables
 }

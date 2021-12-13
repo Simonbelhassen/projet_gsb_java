@@ -27,21 +27,127 @@ public class PageRegionEdit_S extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        btnPRESauvegarderModifs = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        txtPRECodeReg = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        cboPRENomSec = new javax.swing.JComboBox<>();
+        txtPRENomReg = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
+        jPanel2.setPreferredSize(new java.awt.Dimension(560, 500));
+
+        btnPRESauvegarderModifs.setBackground(new java.awt.Color(102, 255, 51));
+        btnPRESauvegarderModifs.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        btnPRESauvegarderModifs.setForeground(new java.awt.Color(255, 255, 255));
+        btnPRESauvegarderModifs.setText("Sauvegarder les modifications");
+        btnPRESauvegarderModifs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPRESauvegarderModifsActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel4.setText("Code de la Région :");
+        jLabel4.setToolTipText("");
+
+        txtPRECodeReg.setEditable(false);
+        txtPRECodeReg.setBackground(new java.awt.Color(204, 204, 204));
+        txtPRECodeReg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPRECodeRegActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel10.setText("Nom du Secteur :");
+        jLabel10.setToolTipText("");
+
+        txtPRENomReg.setEditable(false);
+        txtPRENomReg.setBackground(new java.awt.Color(204, 204, 204));
+        txtPRENomReg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPRENomRegActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel5.setText("Nom de la Région :");
+        jLabel5.setToolTipText("");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPRENomReg)
+                            .addComponent(txtPRECodeReg)
+                            .addComponent(cboPRENomSec, 0, 400, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                        .addComponent(btnPRESauvegarderModifs, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPRECodeReg, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPRENomReg, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPRESauvegarderModifs, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cboPRENomSec, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(154, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPRESauvegarderModifsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPRESauvegarderModifsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPRESauvegarderModifsActionPerformed
+
+    private void txtPRECodeRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPRECodeRegActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPRECodeRegActionPerformed
+
+    private void txtPRENomRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPRENomRegActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPRENomRegActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +185,13 @@ public class PageRegionEdit_S extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPRESauvegarderModifs;
+    private javax.swing.JComboBox<String> cboPRENomSec;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField txtPRECodeReg;
+    private javax.swing.JTextField txtPRENomReg;
     // End of variables declaration//GEN-END:variables
 }

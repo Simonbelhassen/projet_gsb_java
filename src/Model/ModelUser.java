@@ -8,7 +8,7 @@ package Model;
  *
  * @author dimmi
  */
-public class Model {
+public class ModelUser {
 //    Les pages MODEL sont les pages qui communiquant avec la BDD.
 //    Donc tous les pages dans le package ENTITY qui doivent travailler avec la BDD doivent avoir des connection ici.
 }
