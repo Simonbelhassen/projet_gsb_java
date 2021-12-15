@@ -16,6 +16,7 @@ public class FrmPageVisiteurDefault extends javax.swing.JFrame {
 
     FonctionsMetier fm;
     ModelPageVisiteurD mdlVisi;
+    static String indice;
     
     public FrmPageVisiteurDefault() {
         initComponents();
@@ -74,6 +75,7 @@ public class FrmPageVisiteurDefault extends javax.swing.JFrame {
 
         btnPVDModifVis.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         btnPVDModifVis.setText("Modifier un visiteur");
+        btnPVDModifVis.setEnabled(false);
         btnPVDModifVis.setMinimumSize(new java.awt.Dimension(100, 31));
         btnPVDModifVis.setPreferredSize(new java.awt.Dimension(180, 50));
         btnPVDModifVis.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -228,7 +230,11 @@ public class FrmPageVisiteurDefault extends javax.swing.JFrame {
     private void btnPVDModifVisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPVDModifVisMouseClicked
         // TODO add your handling code here:
         
-        FrmPageVisiteurEdit frm = new FrmPageVisiteurEdit();
+        int column = 0;
+        int row = tblPVDVisiteurs.getSelectedRow();
+        indice = tblPVDVisiteurs.getValueAt(row, column).toString();
+        
+        FrmPageVisiteurEdit frm = new FrmPageVisiteurEdit(indice);
         frm.setVisible(true);
         
     }//GEN-LAST:event_btnPVDModifVisMouseClicked

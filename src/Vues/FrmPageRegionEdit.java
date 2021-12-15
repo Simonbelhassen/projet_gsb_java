@@ -5,7 +5,10 @@
  */
 package Vues;
 
+import Entity.Region;
+import Entity.Secteur;
 import Tools.FonctionsMetier;
+//import static Vues.FrmPageRegionDefault.valueFirstColumn;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,11 +17,13 @@ import javax.swing.JOptionPane;
  */
 public class FrmPageRegionEdit extends javax.swing.JFrame {
 
-    FonctionsMetier fm;
-    FrmPageRegionDefault indice;
+    FonctionsMetier fm = new FonctionsMetier();
     
-    public FrmPageRegionEdit() {
+    static String numRegion;
+    
+    public FrmPageRegionEdit(String codeRegion) {
         initComponents();
+        numRegion = codeRegion;
     }
 
     /**
@@ -54,9 +59,9 @@ public class FrmPageRegionEdit extends javax.swing.JFrame {
         btnPRESauvegarderModifs.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         btnPRESauvegarderModifs.setForeground(new java.awt.Color(255, 255, 255));
         btnPRESauvegarderModifs.setText("Sauvegarder les modifications");
-        btnPRESauvegarderModifs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPRESauvegarderModifsActionPerformed(evt);
+        btnPRESauvegarderModifs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPRESauvegarderModifsMouseClicked(evt);
             }
         });
 
@@ -66,11 +71,6 @@ public class FrmPageRegionEdit extends javax.swing.JFrame {
 
         txtPRECodeReg.setEditable(false);
         txtPRECodeReg.setBackground(new java.awt.Color(204, 204, 204));
-        txtPRECodeReg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPRECodeRegActionPerformed(evt);
-            }
-        });
 
         jLabel10.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel10.setText("Nom du Secteur :");
@@ -78,11 +78,6 @@ public class FrmPageRegionEdit extends javax.swing.JFrame {
 
         txtPRENomReg.setEditable(false);
         txtPRENomReg.setBackground(new java.awt.Color(204, 204, 204));
-        txtPRENomReg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPRENomRegActionPerformed(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel5.setText("Nom de la Région :");
@@ -145,27 +140,50 @@ public class FrmPageRegionEdit extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPRESauvegarderModifsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPRESauvegarderModifsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPRESauvegarderModifsActionPerformed
-
-    private void txtPRECodeRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPRECodeRegActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPRECodeRegActionPerformed
-
-    private void txtPRENomRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPRENomRegActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPRENomRegActionPerformed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        indice = new FrmPageRegionDefault();
-        JOptionPane.showMessageDialog(this, indice.indice);
-        FrmPageRegionDefault cc = new FrmPageRegionDefault();
-        int nic = cc.indice;
-        JOptionPane.showMessageDialog(this, nic);
+        
+        txtPRECodeReg.setText(numRegion);
+        
+        for(Secteur sec : fm.GetAllSecteurs())
+        {
+            String b = sec.getSecCode() + " -- " + sec.getSecNom();
+            cboPRENomSec.addItem(b);
+        }
+        
+        Region unRegion = fm.GetUnRegion(Integer.parseInt(numRegion));
+        
+        if(unRegion == null)
+        {
+            JOptionPane.showMessageDialog(this, "Identifiants incorrects", "INFOS", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "OK", "INFOS", JOptionPane.INFORMATION_MESSAGE);
+            txtPRENomReg.setText(fm.GetUnRegion(Integer.parseInt(numRegion)).getRegNom().toString());
+            
+        }
+        
         
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnPRESauvegarderModifsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPRESauvegarderModifsMouseClicked
+        // TODO add your handling code here:
+        
+        fm = new FonctionsMetier();
+        
+        String codeRegion = txtPRECodeReg.getText();
+        String nomRegion = "reg_nom";
+        String codeSecteur = cboPRENomSec.getSelectedItem().toString();
+        String[] mot = codeSecteur.split(" -- ");
+        
+        fm.ModifierRegion(Integer.parseInt(codeRegion), nomRegion, Integer.parseInt(mot[0]));
+        JOptionPane.showMessageDialog(this, "La requette a marcher. Donc va verifier la bdd. OK");
+        
+        FrmPageRegionDefault frm = new FrmPageRegionDefault();
+        frm.setVisible(true);
+        
+    }//GEN-LAST:event_btnPRESauvegarderModifsMouseClicked
 
     /**
      * @param args the command line arguments
@@ -198,7 +216,7 @@ public class FrmPageRegionEdit extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmPageRegionEdit().setVisible(true);
+                new FrmPageRegionEdit(numRegion).setVisible(true);
             }
         });
     }

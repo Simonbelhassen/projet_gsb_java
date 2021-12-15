@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2021 at 06:51 AM
+-- Generation Time: Dec 15, 2021 at 07:42 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -90,7 +90,7 @@ INSERT INTO `region` (`reg_code`, `reg_nom`, `sec_code`) VALUES
 (13030, 'Provence', 13000),
 (13040, 'Midi-Pyrénées', 13000),
 (13050, 'Languedoc-Rousillon', 13000),
-(20100, 'Bastia', 20000),
+(20100, 'Bastia', 59000),
 (29160, 'Bretagne', 29000),
 (29250, 'Normandie', 29000),
 (29340, 'Pays de la Loire', 29000),
@@ -112,7 +112,8 @@ INSERT INTO `region` (`reg_code`, `reg_nom`, `sec_code`) VALUES
 (97551, 'test1', 13000),
 (97552, 'test2', 13000),
 (97553, 'test3', 59000),
-(97554, 'test4', 20000);
+(97554, 'test4', 13000),
+(97555, 'Jack', 45000);
 
 -- --------------------------------------------------------
 
@@ -171,6 +172,7 @@ INSERT INTO `travailler` (`vis_matricule`, `reg_code`, `aaaammjj`, `tra_role`) V
 (6, 65240, '2021-10-01', 'testeur'),
 (7, 13020, '2021-01-23', 'chef de pe'),
 (7, 29250, '2021-12-17', 'médecin'),
+(8, 29160, '2018-09-12', 'Chef'),
 (8, 45100, '2021-03-30', 'chef infir'),
 (8, 59310, '2021-02-24', 'testeur'),
 (9, 65330, '2021-05-27', 'chef de pe'),
@@ -298,7 +300,8 @@ INSERT INTO `visiteur` (`vis_matricule`, `vis_nom`, `vis_prenom`, `vis_adresse`,
 (30, 'Savastanos ', 'Luc', '75 rue pierre', 13800, 'Istre', '2019-05-20', 65000, 31),
 (31, 'testNom', 'testPrenom', 'testAdresse', 59000, 'Lille', '2018-01-22', 45000, 29),
 (32, 'testNom2', 'testPrenom2', 'testAdresse2', 40000, 'Mont De Marsan', '2014-09-04', 20000, 26),
-(33, 'testNom3', 'testprenom3', 'testAdresse3', 92800, 'Fort-de-France', '2019-07-03', 59000, 49);
+(33, 'testNom3', 'testprenom3', 'testAdresse3', 92800, 'Fort-de-France', '2019-07-03', 59000, 49),
+(34, 'tik', 'tik', 'tiktak', 92800, 'Fort-de-France', '2018-09-02', 29000, 28);
 
 --
 -- Indexes for dumped tables

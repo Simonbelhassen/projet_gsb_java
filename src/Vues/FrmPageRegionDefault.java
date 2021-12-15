@@ -11,13 +11,14 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author simonbelhassen
+ * @author dim
  */
+
 public class FrmPageRegionDefault extends javax.swing.JFrame {
 
     FonctionsMetier fm;
     ModelPageRegionD mdlReg;
-    int indice;
+    static String indice;
     
     public FrmPageRegionDefault() {
         initComponents();
@@ -215,11 +216,12 @@ public class FrmPageRegionDefault extends javax.swing.JFrame {
     private void btnPRDModifRegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPRDModifRegMouseClicked
         // TODO add your handling code here:
         
-        int indice = tblPRDReg.getSelectedRow();
-        JOptionPane.showMessageDialog(this, indice);
-        FrmPageRegionEdit frm = new FrmPageRegionEdit();
+        int column = 0;
+        int row = tblPRDReg.getSelectedRow();
+        indice = tblPRDReg.getValueAt(row, column).toString();
+        
+        FrmPageRegionEdit frm = new FrmPageRegionEdit(indice);
         frm.setVisible(true);
-//        this.hide();
         
     }//GEN-LAST:event_btnPRDModifRegMouseClicked
 

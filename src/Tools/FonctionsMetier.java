@@ -227,5 +227,57 @@ public class FonctionsMetier implements IMetier
             Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @Override
+    public Region GetUnRegion(int unCode) {
+        Region unRegion = null;
+        try {
+            Connection cnx = ConnexionBDD.getCnx();
+            PreparedStatement ps = cnx.prepareStatement("select reg_code, reg_nom, sec_code from region where reg_code =  " + unCode + "");
+            ResultSet rs = ps.executeQuery();
+            if(rs.next())
+            {
+                unRegion = new Region(rs.getInt("reg_code"), rs.getString("reg_nom"), rs.getInt("sec_code"));
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return unRegion;
+    }
+
+    @Override
+    public void ModifierRegion(int regCode, String regNom, int secCode) {
+        try {
+            Connection cnx = ConnexionBDD.getCnx();
+            PreparedStatement ps = cnx.prepareStatement("UPDATE region SET region.reg_code = "+regCode+", region.reg_nom = "+regNom+", region.sec_code = "+secCode+" WHERE reg_code = "+regCode+";");
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void ModifierSecteur(int visMatricule, String visNom, String visPrenom, String visAdresse, int visCodePostal, String visVille, String visDateEmbauche, int secCode, int labCode) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Visiteur GetUnVisiteur(int uneMatricule) {
+        Visiteur unVisiteur = null;
+        try {
+            Connection cnx = ConnexionBDD.getCnx();
+            PreparedStatement ps = cnx.prepareStatement("select vis_matricule, vis_nom, vis_prenom, vis_adresse, vis_cp, vis_ville, vis_dateembauche, sec_code, lab_code from visiteur where vis_matricule =  " + uneMatricule + "");
+            ResultSet rs = ps.executeQuery();
+            if(rs.next())
+            {
+                unVisiteur = new Visiteur(rs.getInt("vis_matricule"), rs.getString("vis_nom"), rs.getString("vis_prenom"), rs.getString("vis_adresse"), rs.getInt("vis_cp"), rs.getString("vis_ville"), rs.getString("vis_dateembauche"), rs.getInt("sec_code"), rs.getInt("lab_code"));
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return unVisiteur;
+    }
     
 }

@@ -5,17 +5,29 @@
  */
 package Vues;
 
+import Entity.Laboratoire;
+import Entity.Secteur;
+import Entity.Visiteur;
+import Tools.FonctionsMetier;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author simonbelhassen
  */
 public class FrmPageVisiteurEdit extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PageVisiteurEdit_S
-     */
-    public FrmPageVisiteurEdit() {
+    FonctionsMetier fm = new FonctionsMetier();
+    
+    static String numMatricule;
+    
+    public FrmPageVisiteurEdit(String codeMatricule) {
         initComponents();
+        numMatricule = codeMatricule;
+    }
+
+    private FrmPageVisiteurEdit() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -40,7 +52,6 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtPVEAdresse = new javax.swing.JTextField();
         txtPVEVille = new javax.swing.JTextField();
-        cboPVECodePostal = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -49,8 +60,14 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
         txtPVEPrenom = new javax.swing.JTextField();
         txtPVECodeMatricule = new javax.swing.JTextField();
         jCalendarPVEDateEmbauche = new com.toedter.calendar.JCalendar();
+        txtPVECodePostal = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
@@ -63,9 +80,9 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
         btnPVESauvegarderModifs.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         btnPVESauvegarderModifs.setForeground(new java.awt.Color(255, 255, 255));
         btnPVESauvegarderModifs.setText("Sauvegarder les modifications");
-        btnPVESauvegarderModifs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPVESauvegarderModifsActionPerformed(evt);
+        btnPVESauvegarderModifs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPVESauvegarderModifsMouseClicked(evt);
             }
         });
 
@@ -83,11 +100,6 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
 
         txtPVENom.setEditable(false);
         txtPVENom.setBackground(new java.awt.Color(153, 153, 153));
-        txtPVENom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPVENomActionPerformed(evt);
-            }
-        });
 
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator3.setForeground(new java.awt.Color(51, 51, 51));
@@ -106,22 +118,9 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
 
         txtPVEAdresse.setEditable(false);
         txtPVEAdresse.setBackground(new java.awt.Color(153, 153, 153));
-        txtPVEAdresse.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPVEAdresseActionPerformed(evt);
-            }
-        });
 
         txtPVEVille.setEditable(false);
         txtPVEVille.setBackground(new java.awt.Color(153, 153, 153));
-        txtPVEVille.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPVEVilleActionPerformed(evt);
-            }
-        });
-
-        cboPVECodePostal.setBackground(new java.awt.Color(153, 153, 153));
-        cboPVECodePostal.setEnabled(false);
 
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel7.setText("Nom Laboratoire :");
@@ -137,22 +136,15 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
 
         txtPVEPrenom.setEditable(false);
         txtPVEPrenom.setBackground(new java.awt.Color(153, 153, 153));
-        txtPVEPrenom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPVEPrenomActionPerformed(evt);
-            }
-        });
 
         txtPVECodeMatricule.setEditable(false);
         txtPVECodeMatricule.setBackground(new java.awt.Color(153, 153, 153));
-        txtPVECodeMatricule.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPVECodeMatriculeActionPerformed(evt);
-            }
-        });
 
         jCalendarPVEDateEmbauche.setEnabled(false);
         jCalendarPVEDateEmbauche.setFont(new java.awt.Font("Segoe UI", 0, 9)); // NOI18N
+
+        txtPVECodePostal.setEditable(false);
+        txtPVECodePostal.setBackground(new java.awt.Color(153, 153, 153));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -164,7 +156,7 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboPVECodePostal, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtPVECodePostal, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPVEVille, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -229,13 +221,13 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPVEAdresse, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboPVECodePostal, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtPVEAdresse, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
-                        .addComponent(txtPVEVille, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtPVEVille, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPVECodePostal, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(40, 40, 40)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -272,29 +264,89 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPVESauvegarderModifsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPVESauvegarderModifsActionPerformed
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnPVESauvegarderModifsActionPerformed
+        
+        txtPVECodeMatricule.setText(numMatricule);
+        
+        for(Secteur sec : fm.GetAllSecteurs())
+        {
+            String b = sec.getSecCode() + " -- " + sec.getSecNom();
+            cboPVENomSec.addItem(b);
+        }
+        
+        for(Laboratoire lab : fm.GetAllLaboratoires())
+        {
+            String b = lab.getLabCode() + " -- " + lab.getLabNom();
+            cboPVENomLab.addItem(b);
+        }
+        
+        Visiteur unVisiteur = fm.GetUnVisiteur(Integer.parseInt(numMatricule));
+        
+        if(unVisiteur == null)
+        {
+            JOptionPane.showMessageDialog(this, "Identifiants incorrects", "INFOS", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "OK", "INFOS", JOptionPane.INFORMATION_MESSAGE);
+            txtPVENom.setText(fm.GetUnVisiteur(Integer.parseInt(numMatricule)).getVisNom().toString());
+            txtPVEPrenom.setText(fm.GetUnVisiteur(Integer.parseInt(numMatricule)).getVisPrenom().toString());
+            txtPVEAdresse.setText(fm.GetUnVisiteur(Integer.parseInt(numMatricule)).getVisAdresse().toString());
+//            txtPVECodePostal.setText(fm.GetUnVisiteur((numMatricule)).getVisCodePostal());
+            txtPVEVille.setText(fm.GetUnVisiteur(Integer.parseInt(numMatricule)).getVisVille()); 
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_formWindowOpened
 
-    private void txtPVENomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPVENomActionPerformed
+    private void btnPVESauvegarderModifsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPVESauvegarderModifsMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPVENomActionPerformed
-
-    private void txtPVEAdresseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPVEAdresseActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPVEAdresseActionPerformed
-
-    private void txtPVEVilleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPVEVilleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPVEVilleActionPerformed
-
-    private void txtPVEPrenomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPVEPrenomActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPVEPrenomActionPerformed
-
-    private void txtPVECodeMatriculeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPVECodeMatriculeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPVECodeMatriculeActionPerformed
+        
+        fm = new FonctionsMetier();
+        
+        String matricule = txtPVECodeMatricule.getText();
+        String nom = txtPVENom.getText();
+        String prenom = txtPVEPrenom.getText();
+        String adresse = txtPVEAdresse.getText();
+        String codePostal = txtPVECodePostal.getText();
+        String ville = txtPVEVille.getText();
+        
+        
+        int year = jCalendarPVEDateEmbauche.getYearChooser().getYear();
+        int month = jCalendarPVEDateEmbauche.getMonthChooser().getMonth() + 1;
+        int day = jCalendarPVEDateEmbauche.getDayChooser().getDay();
+        
+        String formatDate = String.valueOf(year) + "-" + String.valueOf(month) + "-" + String.valueOf(day);
+        
+        for (Secteur sec : fm.GetAllSecteurs()) 
+        {
+            String b = sec.getSecCode() + " -- " + sec.getSecNom();
+            cboPVENomSec.addItem(b);
+        }
+        
+        for (Laboratoire lab : fm.GetAllLaboratoires()) 
+        {
+            String b = lab.getLabCode() + " -- " + lab.getLabNom();
+            cboPVENomLab.addItem(b);
+        }
+        
+        String aa = cboPVENomSec.getSelectedItem().toString();
+        String[] sec = aa.split(" -- ");
+        
+        String bb = cboPVENomLab.getSelectedItem().toString();
+        String[] lab = bb.split(" -- ");
+        
+//        fm.ModifierRegion(Integer.parseInt(codeRegion), nomRegion, Integer.parseInt(mot[0]));
+        fm.ModifierSecteur(Integer.parseInt(matricule), nom, prenom, adresse, Integer.parseInt(codePostal), ville, formatDate, Integer.parseInt(sec[0]), Integer.parseInt(lab[0]));
+        JOptionPane.showMessageDialog(this, "La requette a marcher. Donc va verifier la bdd. OK");
+        
+        FrmPageVisiteurDefault frm = new FrmPageVisiteurDefault();
+        frm.setVisible(true);
+        
+    }//GEN-LAST:event_btnPVESauvegarderModifsMouseClicked
 
     /**
      * @param args the command line arguments
@@ -336,7 +388,6 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPVESauvegarderModifs;
-    private javax.swing.JComboBox<String> cboPVECodePostal;
     private javax.swing.JComboBox<String> cboPVENomLab;
     private javax.swing.JComboBox<String> cboPVENomSec;
     private com.toedter.calendar.JCalendar jCalendarPVEDateEmbauche;
@@ -354,6 +405,7 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextField txtPVEAdresse;
     private javax.swing.JTextField txtPVECodeMatricule;
+    private javax.swing.JTextField txtPVECodePostal;
     private javax.swing.JTextField txtPVENom;
     private javax.swing.JTextField txtPVEPrenom;
     private javax.swing.JTextField txtPVEVille;
