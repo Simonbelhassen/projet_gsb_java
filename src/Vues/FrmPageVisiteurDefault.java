@@ -5,16 +5,19 @@
  */
 package Vues;
 
+import Model.ModelPageVisiteurD;
+import Tools.FonctionsMetier;
+
 /**
  *
  * @author simonbelhassen
  */
-public class PageVisiteur_D extends javax.swing.JFrame {
+public class FrmPageVisiteurDefault extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PageVisiteur_S
-     */
-    public PageVisiteur_D() {
+    FonctionsMetier fm;
+    ModelPageVisiteurD mdlVisi;
+    
+    public FrmPageVisiteurDefault() {
         initComponents();
     }
 
@@ -39,19 +42,22 @@ public class PageVisiteur_D extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         tblPVDVisiteurs.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         tblPVDVisiteurs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Matricule", "Nom", "Prénom", "Adresse", "Code Postal", "Ville", "Date d'embauche", "Nom Secteur", "Nom Laboratoire"
+
             }
         ));
         jScrollPane1.setViewportView(tblPVDVisiteurs);
@@ -60,20 +66,40 @@ public class PageVisiteur_D extends javax.swing.JFrame {
         btnPVDAjouterVis.setText("Ajouter un visiteur");
         btnPVDAjouterVis.setMinimumSize(new java.awt.Dimension(100, 31));
         btnPVDAjouterVis.setPreferredSize(new java.awt.Dimension(180, 50));
+        btnPVDAjouterVis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPVDAjouterVisMouseClicked(evt);
+            }
+        });
 
         btnPVDModifVis.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         btnPVDModifVis.setText("Modifier un visiteur");
         btnPVDModifVis.setMinimumSize(new java.awt.Dimension(100, 31));
         btnPVDModifVis.setPreferredSize(new java.awt.Dimension(180, 50));
+        btnPVDModifVis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPVDModifVisMouseClicked(evt);
+            }
+        });
 
         btnPVDConfigRegs.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         btnPVDConfigRegs.setText("Configuration régions");
         btnPVDConfigRegs.setMinimumSize(new java.awt.Dimension(100, 31));
         btnPVDConfigRegs.setPreferredSize(new java.awt.Dimension(200, 31));
+        btnPVDConfigRegs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPVDConfigRegsMouseClicked(evt);
+            }
+        });
 
         btnPVDNavReg.setFont(new java.awt.Font("Rockwell", 0, 24)); // NOI18N
         btnPVDNavReg.setText("Régions");
         btnPVDNavReg.setPreferredSize(new java.awt.Dimension(160, 37));
+        btnPVDNavReg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPVDNavRegMouseClicked(evt);
+            }
+        });
 
         btnPVDNavVis.setBackground(new java.awt.Color(255, 204, 0));
         btnPVDNavVis.setFont(new java.awt.Font("Rockwell", 0, 24)); // NOI18N
@@ -83,6 +109,7 @@ public class PageVisiteur_D extends javax.swing.JFrame {
 
         btnPVDNavStats.setFont(new java.awt.Font("Rockwell", 0, 24)); // NOI18N
         btnPVDNavStats.setText("Statistiques");
+        btnPVDNavStats.setEnabled(false);
         btnPVDNavStats.setMaximumSize(new java.awt.Dimension(160, 37));
         btnPVDNavStats.setMinimumSize(new java.awt.Dimension(160, 37));
         btnPVDNavStats.setPreferredSize(new java.awt.Dimension(160, 37));
@@ -171,6 +198,49 @@ public class PageVisiteur_D extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        
+        fm = new FonctionsMetier();
+        mdlVisi = new ModelPageVisiteurD();
+        mdlVisi.loadDatas(fm.GetAllVisiteurs());
+        tblPVDVisiteurs.setModel(mdlVisi);
+        
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnPVDNavRegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPVDNavRegMouseClicked
+        // TODO add your handling code here:
+
+        FrmPageRegionDefault frm = new FrmPageRegionDefault();
+        frm.setVisible(true);
+//        this.hide();
+        
+    }//GEN-LAST:event_btnPVDNavRegMouseClicked
+
+    private void btnPVDAjouterVisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPVDAjouterVisMouseClicked
+        // TODO add your handling code here:
+        
+        FrmPageVisiteurAdd frm = new FrmPageVisiteurAdd();
+        frm.setVisible(true);
+        
+    }//GEN-LAST:event_btnPVDAjouterVisMouseClicked
+
+    private void btnPVDModifVisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPVDModifVisMouseClicked
+        // TODO add your handling code here:
+        
+        FrmPageVisiteurEdit frm = new FrmPageVisiteurEdit();
+        frm.setVisible(true);
+        
+    }//GEN-LAST:event_btnPVDModifVisMouseClicked
+
+    private void btnPVDConfigRegsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPVDConfigRegsMouseClicked
+        // TODO add your handling code here:
+        
+        FrmPageVisiteurRegion frm = new FrmPageVisiteurRegion();
+        frm.setVisible(true);
+        
+    }//GEN-LAST:event_btnPVDConfigRegsMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -188,21 +258,23 @@ public class PageVisiteur_D extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PageVisiteur_D.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageVisiteurDefault.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PageVisiteur_D.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageVisiteurDefault.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PageVisiteur_D.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageVisiteurDefault.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PageVisiteur_D.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageVisiteurDefault.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PageVisiteur_D().setVisible(true);
+                new FrmPageVisiteurDefault().setVisible(true);
             }
         });
     }

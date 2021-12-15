@@ -4,7 +4,7 @@
  */
 package Model;
 
-import Entity.Visiteur;
+import Entity.Travailler;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
@@ -13,12 +13,9 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author dimmi
  */
-public class ModelPageVisiteurD extends AbstractTableModel
+public class ModelVisiteurCourt extends AbstractTableModel
 {
-    //    Les pages MODEL sont les pages qui communiquant avec la BDD.
-    //    Donc tous les pages dans le package ENTITY qui doivent travailler avec la BDD doivent avoir des connection ici.
-    
-    private String[] nomsColonnes = {"Matricule", "Nom", "Prénom", "Adresse", "Code Postal", "Ville", "Date d'embauche", "Code Secteur", "Code Laboratoire"};
+    private String[] nomsColonnes = {"Matricule", "Nom Visiteur"};
     private Vector<String[]> rows;
 
     @Override
@@ -41,12 +38,12 @@ public class ModelPageVisiteurD extends AbstractTableModel
         return nomsColonnes[column]; 
     }
     
-    public void loadDatas(ArrayList<Visiteur> lesVisiteurs)
+    public void loadDatas(ArrayList<Travailler> lesTravailleurs)
     {
         rows = new Vector<>();
-        for(Visiteur tic : lesVisiteurs)
+        for(Travailler tra : lesTravailleurs)
         {
-            rows.add(new String[]{String.valueOf(tic.getVisMatricule()),tic.getVisNom(),tic.getVisPrenom(),tic.getVisAdresse(), String.valueOf(tic.getVisCodePostal()), tic.getVisVille(), tic.getVisDateEmbauche(), String.valueOf(tic.getSecCode()), String.valueOf(tic.getLabCode())});
+            rows.add(new String[]{String.valueOf(tra.getVisMatricule()), String.valueOf(tra.getRegCode()), tra.getDate(), tra.getRoleTravail()});
         }
         fireTableChanged(null);
     }

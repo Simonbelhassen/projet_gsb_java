@@ -5,16 +5,19 @@
  */
 package Vues;
 
+import Tools.FonctionsMetier;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author simonbelhassen
  */
-public class PageRegionEdit_S extends javax.swing.JFrame {
+public class FrmPageRegionEdit extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PageRegionEdit_S
-     */
-    public PageRegionEdit_S() {
+    FonctionsMetier fm;
+    FrmPageRegionDefault indice;
+    
+    public FrmPageRegionEdit() {
         initComponents();
     }
 
@@ -36,7 +39,12 @@ public class PageRegionEdit_S extends javax.swing.JFrame {
         txtPRENomReg = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
@@ -149,6 +157,16 @@ public class PageRegionEdit_S extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPRENomRegActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        indice = new FrmPageRegionDefault();
+        JOptionPane.showMessageDialog(this, indice.indice);
+        FrmPageRegionDefault cc = new FrmPageRegionDefault();
+        int nic = cc.indice;
+        JOptionPane.showMessageDialog(this, nic);
+        
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -166,20 +184,21 @@ public class PageRegionEdit_S extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PageRegionEdit_S.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageRegionEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PageRegionEdit_S.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageRegionEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PageRegionEdit_S.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageRegionEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PageRegionEdit_S.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageRegionEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PageRegionEdit_S().setVisible(true);
+                new FrmPageRegionEdit().setVisible(true);
             }
         });
     }

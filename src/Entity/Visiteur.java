@@ -90,24 +90,10 @@ public class Visiteur
     }
 
     /**
-     * @param secCode the secCode to set
-     */
-    public void setSecCode(int secCode) {
-        this.secCode = secCode;
-    }
-
-    /**
      * @return the labCode
      */
     public int getLabCode() {
         return labCode;
-    }
-
-    /**
-     * @param labCode the labCode to set
-     */
-    public void setLabCode(int labCode) {
-        this.labCode = labCode;
     }
     
 }

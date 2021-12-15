@@ -14,11 +14,11 @@ public class User
     private String userName;
     private String userStatut; //Pour cette version de projet, le Statut n'est pas encore utiliser
     
-    public User (int unId, String unNom, String unStatut)
+    public User (int unId, String unNom)
     {
         idUser = unId;
         userName = unNom;
-        userStatut = unStatut;
+//        userStatut = unStatut;
     }
 
     /**
@@ -38,8 +38,8 @@ public class User
     /**
      * @return the userStatut
      */
-    public String getUserStatut() {
-        return userStatut;
-    }
+//    public String getUserStatut() {
+//        return userStatut;
+//    }
     
 }

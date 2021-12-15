@@ -4,16 +4,22 @@
  */
 package Vues;
 
+import Entity.User;
+import Tools.ConnexionBDD;
+import Tools.FonctionsMetier;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author dimmi
  */
-public class PageAccueil_S extends javax.swing.JFrame {
-
+public class FrmPageAccueil extends javax.swing.JFrame 
+{
+    FonctionsMetier fm = new FonctionsMetier();
     /**
      * Creates new form PageAccueil
      */
-    public PageAccueil_S() {
+    public FrmPageAccueil() {
         initComponents();
     }
 
@@ -35,6 +41,11 @@ public class PageAccueil_S extends javax.swing.JFrame {
         btnPAConnecter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -70,6 +81,11 @@ public class PageAccueil_S extends javax.swing.JFrame {
         btnPAConnecter.setForeground(new java.awt.Color(255, 255, 255));
         btnPAConnecter.setText("Se Connecter");
         btnPAConnecter.setToolTipText("");
+        btnPAConnecter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPAConnecterMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -129,6 +145,38 @@ public class PageAccueil_S extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnPAConnecterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPAConnecterMouseClicked
+        // TODO add your handling code here:
+        if(txtPAId.getText().compareTo("") == 0)
+        {
+            JOptionPane.showMessageDialog(this, "Vous devez saisir un identifiant!!!", "ATTENTION", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(txtPAMdp.getText().compareTo("") == 0)
+        {
+            JOptionPane.showMessageDialog(this, "Vous devez saisir un mot de passe!!!", "ATTENTION", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            User unUser = fm.GetUnUser(txtPAId.getText(), txtPAMdp.getText());
+            if(unUser == null)
+            {
+                JOptionPane.showMessageDialog(this, "Identifiants incorrects", "INFOS", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else
+            {
+//                FrmPageVisiteurDefault frm = new FrmPageVisiteurDefault();
+                FrmPageRegionDefault frm = new FrmPageRegionDefault();
+                frm.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_btnPAConnecterMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        ConnexionBDD cnx = new ConnexionBDD();
+        fm = new FonctionsMetier();
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -146,21 +194,23 @@ public class PageAccueil_S extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PageAccueil_S.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageAccueil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PageAccueil_S.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageAccueil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PageAccueil_S.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageAccueil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PageAccueil_S.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageAccueil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PageAccueil_S().setVisible(true);
+                new FrmPageAccueil().setVisible(true);
             }
         });
     }

@@ -5,16 +5,21 @@
  */
 package Vues;
 
+import Entity.Secteur;
+import Model.ModelPageRegionD;
+import Tools.FonctionsMetier;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author simonbelhassen
  */
-public class PageRegionAdd_J extends javax.swing.JFrame {
-
-    /**
-     * Creates new form PageRegionAdd_J
-     */
-    public PageRegionAdd_J() {
+public class FrmPageRegionAdd extends javax.swing.JFrame {
+    
+    FonctionsMetier fm;
+    
+    public FrmPageRegionAdd() {
         initComponents();
     }
 
@@ -36,8 +41,13 @@ public class PageRegionAdd_J extends javax.swing.JFrame {
         txtPRANomReg = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
@@ -47,6 +57,11 @@ public class PageRegionAdd_J extends javax.swing.JFrame {
         btnPRASauvegarder.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         btnPRASauvegarder.setForeground(new java.awt.Color(255, 255, 255));
         btnPRASauvegarder.setText("Sauvegarder");
+        btnPRASauvegarder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPRASauvegarderMouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel2.setText("Code de la Région :");
@@ -54,21 +69,10 @@ public class PageRegionAdd_J extends javax.swing.JFrame {
 
         txtPRACodeReg.setEditable(false);
         txtPRACodeReg.setBackground(new java.awt.Color(204, 204, 204));
-        txtPRACodeReg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPRACodeRegActionPerformed(evt);
-            }
-        });
 
         jLabel9.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel9.setText("Nom du Secteur :");
         jLabel9.setToolTipText("");
-
-        txtPRANomReg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPRANomRegActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel3.setText("Nom de la Région :");
@@ -131,13 +135,39 @@ public class PageRegionAdd_J extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPRACodeRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPRACodeRegActionPerformed
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPRACodeRegActionPerformed
+        
+        fm = new FonctionsMetier();
+        txtPRACodeReg.setText(String.valueOf(fm.GetLastRegCode()));
+        
+        for(Secteur sec : fm.GetAllSecteurs())
+        {
+            String b = sec.getSecCode() + " -- " + sec.getSecNom();
+            cboPRANomSec.addItem(b);
+        }
+        
+    }//GEN-LAST:event_formWindowOpened
 
-    private void txtPRANomRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPRANomRegActionPerformed
+    private void btnPRASauvegarderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPRASauvegarderMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPRANomRegActionPerformed
+        
+        if(txtPRANomReg.getText().compareTo("") == 0)
+        {
+            JOptionPane.showMessageDialog(this,"Vous devez saisir un nom pour votre nouveau région","Erreur de saisie",JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            String aa = cboPRANomSec.getSelectedItem().toString();
+            String[] mot = aa.split(" -- ");
+            
+            fm.InsererRegion(Integer.parseInt(txtPRACodeReg.getText()), txtPRANomReg.getText(), Integer.parseInt(mot[0]));
+            JOptionPane.showMessageDialog(this, "La requette a marcher. Donc va verifier la bdd. OK");
+
+            FrmPageRegionDefault frm = new FrmPageRegionDefault();
+            frm.setVisible(true);
+        }
+    }//GEN-LAST:event_btnPRASauvegarderMouseClicked
 
     /**
      * @param args the command line arguments
@@ -156,20 +186,21 @@ public class PageRegionAdd_J extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PageRegionAdd_J.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageRegionAdd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PageRegionAdd_J.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageRegionAdd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PageRegionAdd_J.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageRegionAdd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PageRegionAdd_J.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageRegionAdd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PageRegionAdd_J().setVisible(true);
+                new FrmPageRegionAdd().setVisible(true);
             }
         });
     }

@@ -5,16 +5,21 @@
  */
 package Vues;
 
+import Model.ModelPageRegionD;
+import Tools.FonctionsMetier;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author simonbelhassen
  */
-public class PageRegion_D extends javax.swing.JFrame {
+public class FrmPageRegionDefault extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PageRegion_D
-     */
-    public PageRegion_D() {
+    FonctionsMetier fm;
+    ModelPageRegionD mdlReg;
+    int indice;
+    
+    public FrmPageRegionDefault() {
         initComponents();
     }
 
@@ -38,7 +43,12 @@ public class PageRegion_D extends javax.swing.JFrame {
         btnPRDAjouterReg = new javax.swing.JButton();
         btnPRDModifReg = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -66,6 +76,11 @@ public class PageRegion_D extends javax.swing.JFrame {
         btnPRDNavVis.setText("Visiteurs");
         btnPRDNavVis.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
         btnPRDNavVis.setPreferredSize(new java.awt.Dimension(160, 29));
+        btnPRDNavVis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPRDNavVisMouseClicked(evt);
+            }
+        });
 
         btnPRDNavReg.setBackground(new java.awt.Color(255, 204, 0));
         btnPRDNavReg.setFont(new java.awt.Font("Rockwell", 0, 24)); // NOI18N
@@ -74,19 +89,17 @@ public class PageRegion_D extends javax.swing.JFrame {
 
         btnPRDNavStats.setFont(new java.awt.Font("Rockwell", 0, 24)); // NOI18N
         btnPRDNavStats.setText("Statistiques");
+        btnPRDNavStats.setEnabled(false);
         btnPRDNavStats.setMaximumSize(new java.awt.Dimension(160, 37));
         btnPRDNavStats.setMinimumSize(new java.awt.Dimension(160, 37));
         btnPRDNavStats.setPreferredSize(new java.awt.Dimension(160, 37));
 
         tblPRDReg.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Code Région", "Nom Région", "Nom Secteur"
+
             }
         ));
         tblPRDReg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -94,10 +107,20 @@ public class PageRegion_D extends javax.swing.JFrame {
 
         btnPRDAjouterReg.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         btnPRDAjouterReg.setText("Ajouter une région");
+        btnPRDAjouterReg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPRDAjouterRegMouseClicked(evt);
+            }
+        });
 
         btnPRDModifReg.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
         btnPRDModifReg.setText("Modifier");
         btnPRDModifReg.setPreferredSize(new java.awt.Dimension(160, 37));
+        btnPRDModifReg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPRDModifRegMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -163,6 +186,43 @@ public class PageRegion_D extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        
+        fm = new FonctionsMetier();
+        mdlReg = new ModelPageRegionD();
+        mdlReg.loadDatas(fm.GetAllRegions());
+        tblPRDReg.setModel(mdlReg);
+        
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnPRDNavVisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPRDNavVisMouseClicked
+        // TODO add your handling code here:
+        FrmPageVisiteurDefault frm = new FrmPageVisiteurDefault();
+        frm.setVisible(true);
+//        this.hide();
+    }//GEN-LAST:event_btnPRDNavVisMouseClicked
+
+    private void btnPRDAjouterRegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPRDAjouterRegMouseClicked
+        // TODO add your handling code here:
+        
+        FrmPageRegionAdd frm = new FrmPageRegionAdd();
+        frm.setVisible(true);
+//        this.hide();
+        
+    }//GEN-LAST:event_btnPRDAjouterRegMouseClicked
+
+    private void btnPRDModifRegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPRDModifRegMouseClicked
+        // TODO add your handling code here:
+        
+        int indice = tblPRDReg.getSelectedRow();
+        JOptionPane.showMessageDialog(this, indice);
+        FrmPageRegionEdit frm = new FrmPageRegionEdit();
+        frm.setVisible(true);
+//        this.hide();
+        
+    }//GEN-LAST:event_btnPRDModifRegMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -180,20 +240,21 @@ public class PageRegion_D extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PageRegion_D.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageRegionDefault.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PageRegion_D.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageRegionDefault.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PageRegion_D.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageRegionDefault.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PageRegion_D.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPageRegionDefault.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PageRegion_D().setVisible(true);
+                new FrmPageRegionDefault().setVisible(true);
             }
         });
     }

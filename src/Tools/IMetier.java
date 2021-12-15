@@ -25,9 +25,10 @@ public interface IMetier
     public ArrayList<Laboratoire> GetAllLaboratoires();
     public ArrayList<Travailler> GetListTravail();
     public void InsererRegion(int regCode, String regNom, int secCode);
-    public void ModifierRegion(int secCode);
     public void InsererVisiteur(int visMatricule, String visNom, String visPrenom, String visAdresse, int visCodePostal, String visVille, String visDateEmbauche, int secCode, int labCode);
-    public void ModifierVisiteur(int secCode, int labCode);
-    public ArrayList<Visiteur> GetVisiteursReg();
+    public int GetLastRegCode();
+    public int GetLastMatriculeCode();
+    public String GetNomVille(int codePostal);
+    public void InsererTravailleur(int visMatricule, String regCode, String date, String role);
     
 }
