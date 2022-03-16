@@ -44,7 +44,7 @@ public class FrmPageRegionEdit extends javax.swing.JFrame {
         txtPRENomReg = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -182,6 +182,7 @@ public class FrmPageRegionEdit extends javax.swing.JFrame {
         
         FrmPageRegionDefault frm = new FrmPageRegionDefault();
         frm.setVisible(true);
+        this.setVisible(false);
         
     }//GEN-LAST:event_btnPRESauvegarderModifsMouseClicked
 

@@ -62,7 +62,7 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
         jCalendarPVEDateEmbauche = new com.toedter.calendar.JCalendar();
         txtPVECodePostal = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -145,6 +145,7 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
 
         txtPVECodePostal.setEditable(false);
         txtPVECodePostal.setBackground(new java.awt.Color(153, 153, 153));
+        txtPVECodePostal.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -291,9 +292,11 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this, "OK", "INFOS", JOptionPane.INFORMATION_MESSAGE);
             txtPVENom.setText(fm.GetUnVisiteur(Integer.parseInt(numMatricule)).getVisNom().toString());
+//            txtPVENom.setText(fm.GetUnVisiteur(Integer.parseInt(numMatricule)).getVisNom().toString());
             txtPVEPrenom.setText(fm.GetUnVisiteur(Integer.parseInt(numMatricule)).getVisPrenom().toString());
+//            txtPVECodePostal.setText(fm.GetUnVisiteur(Integer.parseInt(numMatricule)).getVisCodePostal());
             txtPVEAdresse.setText(fm.GetUnVisiteur(Integer.parseInt(numMatricule)).getVisAdresse().toString());
-//            txtPVECodePostal.setText(fm.GetUnVisiteur((numMatricule)).getVisCodePostal());
+//            txtPVECodePostal.setText(fm.GetUnVisiteur(Integer.parseInt(numMatricule)).getVisCodePostal().toString());
             txtPVEVille.setText(fm.GetUnVisiteur(Integer.parseInt(numMatricule)).getVisVille()); 
         }
         
@@ -345,6 +348,7 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
         
         FrmPageVisiteurDefault frm = new FrmPageVisiteurDefault();
         frm.setVisible(true);
+        this.setVisible(false);
         
     }//GEN-LAST:event_btnPVESauvegarderModifsMouseClicked
 

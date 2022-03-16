@@ -41,6 +41,7 @@ public class FrmPageAccueil extends javax.swing.JFrame
         btnPAConnecter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -104,12 +105,12 @@ public class FrmPageAccueil extends javax.swing.JFrame
                             .addComponent(txtPAId)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(156, 156, 156)
-                        .addComponent(titre2, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(titre2)
+                        .addGap(3, 3, 3)
                         .addComponent(titre3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(282, 282, 282)
-                        .addComponent(btnPAConnecter, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnPAConnecter)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -164,9 +165,10 @@ public class FrmPageAccueil extends javax.swing.JFrame
             }
             else
             {
-//                FrmPageVisiteurDefault frm = new FrmPageVisiteurDefault();
+                
                 FrmPageRegionDefault frm = new FrmPageRegionDefault();
                 frm.setVisible(true);
+                this.setVisible(false);
             }
         }
     }//GEN-LAST:event_btnPAConnecterMouseClicked

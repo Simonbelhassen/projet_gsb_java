@@ -7,6 +7,7 @@ package Vues;
 
 import Model.ModelPageVisiteurD;
 import Tools.FonctionsMetier;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -42,8 +43,9 @@ public class FrmPageVisiteurDefault extends javax.swing.JFrame {
         btnPVDNavStats = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        btnDeconnexion = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -136,13 +138,20 @@ public class FrmPageVisiteurDefault extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
         );
 
+        btnDeconnexion.setText("DECONNEXION");
+        btnDeconnexion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeconnexionMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(btnPVDAjouterVis, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(btnPVDAjouterVis, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnPVDModifVis, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
@@ -158,17 +167,24 @@ public class FrmPageVisiteurDefault extends javax.swing.JFrame {
                 .addGap(91, 91, 91)
                 .addComponent(btnPVDNavVis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnPVDNavStats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnPVDNavStats, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnDeconnexion)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addContainerGap()
+                .addComponent(btnDeconnexion)
+                .addGap(6, 6, 6)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -215,7 +231,7 @@ public class FrmPageVisiteurDefault extends javax.swing.JFrame {
 
         FrmPageRegionDefault frm = new FrmPageRegionDefault();
         frm.setVisible(true);
-//        this.hide();
+        this.setVisible(false);
         
     }//GEN-LAST:event_btnPVDNavRegMouseClicked
 
@@ -224,6 +240,7 @@ public class FrmPageVisiteurDefault extends javax.swing.JFrame {
         
         FrmPageVisiteurAdd frm = new FrmPageVisiteurAdd();
         frm.setVisible(true);
+        this.setVisible(false);
         
     }//GEN-LAST:event_btnPVDAjouterVisMouseClicked
 
@@ -232,10 +249,17 @@ public class FrmPageVisiteurDefault extends javax.swing.JFrame {
         
         int column = 0;
         int row = tblPVDVisiteurs.getSelectedRow();
-        indice = tblPVDVisiteurs.getValueAt(row, column).toString();
         
-        FrmPageVisiteurEdit frm = new FrmPageVisiteurEdit(indice);
-        frm.setVisible(true);
+        if (row == -1) 
+        {
+            JOptionPane.showMessageDialog(this, "Vous devez choisir un utilisateur!!!", "INFOS", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            indice = tblPVDVisiteurs.getValueAt(row, column).toString();
+            FrmPageVisiteurEdit frm = new FrmPageVisiteurEdit(indice);
+            frm.setVisible(true);
+            this.setVisible(false);
+        }
+
         
     }//GEN-LAST:event_btnPVDModifVisMouseClicked
 
@@ -244,8 +268,17 @@ public class FrmPageVisiteurDefault extends javax.swing.JFrame {
         
         FrmPageVisiteurRegion frm = new FrmPageVisiteurRegion();
         frm.setVisible(true);
+        this.setVisible(false);
         
     }//GEN-LAST:event_btnPVDConfigRegsMouseClicked
+
+    private void btnDeconnexionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeconnexionMouseClicked
+        // TODO add your handling code here:
+        
+        FrmPageAccueil frm = new FrmPageAccueil();
+        frm.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnDeconnexionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -286,6 +319,7 @@ public class FrmPageVisiteurDefault extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDeconnexion;
     private javax.swing.JButton btnPVDAjouterVis;
     private javax.swing.JButton btnPVDConfigRegs;
     private javax.swing.JButton btnPVDModifVis;

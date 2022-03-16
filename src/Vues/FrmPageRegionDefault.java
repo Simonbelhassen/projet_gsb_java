@@ -7,6 +7,7 @@ package Vues;
 
 import Model.ModelPageRegionD;
 import Tools.FonctionsMetier;
+import java.awt.Frame;
 import javax.swing.JOptionPane;
 
 /**
@@ -43,8 +44,9 @@ public class FrmPageRegionDefault extends javax.swing.JFrame {
         tblPRDReg = new javax.swing.JTable();
         btnPRDAjouterReg = new javax.swing.JButton();
         btnPRDModifReg = new javax.swing.JButton();
+        btnDeconnexion = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -123,6 +125,13 @@ public class FrmPageRegionDefault extends javax.swing.JFrame {
             }
         });
 
+        btnDeconnexion.setText("DECONNEXION");
+        btnDeconnexion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeconnexionMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -133,30 +142,35 @@ public class FrmPageRegionDefault extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(146, 146, 146))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(89, 89, 89)
-                                .addComponent(btnPRDNavReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(67, 67, 67)
-                                .addComponent(btnPRDNavVis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnPRDNavStats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(btnPRDAjouterReg, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnPRDModifReg, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(86, 86, 86))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(89, 89, 89)
+                            .addComponent(btnPRDNavReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(67, 67, 67)
+                            .addComponent(btnPRDNavVis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(322, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnPRDAjouterReg, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnPRDModifReg, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnPRDNavStats, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(86, 86, 86)))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnDeconnexion)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addContainerGap()
+                .addComponent(btnDeconnexion)
+                .addGap(5, 5, 5)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -201,7 +215,7 @@ public class FrmPageRegionDefault extends javax.swing.JFrame {
         // TODO add your handling code here:
         FrmPageVisiteurDefault frm = new FrmPageVisiteurDefault();
         frm.setVisible(true);
-//        this.hide();
+        this.setVisible(false);
     }//GEN-LAST:event_btnPRDNavVisMouseClicked
 
     private void btnPRDAjouterRegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPRDAjouterRegMouseClicked
@@ -209,21 +223,39 @@ public class FrmPageRegionDefault extends javax.swing.JFrame {
         
         FrmPageRegionAdd frm = new FrmPageRegionAdd();
         frm.setVisible(true);
-//        this.hide();
+        this.setVisible(false);
         
     }//GEN-LAST:event_btnPRDAjouterRegMouseClicked
 
     private void btnPRDModifRegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPRDModifRegMouseClicked
         // TODO add your handling code here:
-        
         int column = 0;
         int row = tblPRDReg.getSelectedRow();
-        indice = tblPRDReg.getValueAt(row, column).toString();
+//        JOptionPane.showMessageDialog(this, row, "INFOS", JOptionPane.INFORMATION_MESSAGE);
+        if (row == -1) 
+        {
+            JOptionPane.showMessageDialog(this, "Vous devez choisir un utilisateur!!!", "INFOS", JOptionPane.INFORMATION_MESSAGE);
+        }else
+        {
+            indice = tblPRDReg.getValueAt(row, column).toString();
+
+            FrmPageRegionEdit frm = new FrmPageRegionEdit(indice);
+            frm.setVisible(true);
+            this.setVisible(false);
+        }
         
-        FrmPageRegionEdit frm = new FrmPageRegionEdit(indice);
-        frm.setVisible(true);
+        
+
         
     }//GEN-LAST:event_btnPRDModifRegMouseClicked
+
+    private void btnDeconnexionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeconnexionMouseClicked
+        // TODO add your handling code here:
+        
+        FrmPageAccueil frm = new FrmPageAccueil();
+        frm.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnDeconnexionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -262,6 +294,7 @@ public class FrmPageRegionDefault extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDeconnexion;
     private javax.swing.JButton btnPRDAjouterReg;
     private javax.swing.JButton btnPRDModifReg;
     private javax.swing.JButton btnPRDNavReg;
