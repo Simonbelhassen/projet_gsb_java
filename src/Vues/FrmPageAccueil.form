@@ -140,6 +140,9 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Identifiant"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPAIdFocusGained"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="titre3">
           <Properties>
@@ -167,6 +170,10 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Mot de Passe"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPAMdpFocusGained"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPAMdpActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnPAConnecter">
           <Properties>
