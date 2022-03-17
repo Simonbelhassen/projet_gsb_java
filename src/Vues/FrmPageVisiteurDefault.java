@@ -113,10 +113,14 @@ public class FrmPageVisiteurDefault extends javax.swing.JFrame {
 
         btnPVDNavStats.setFont(new java.awt.Font("Rockwell", 0, 24)); // NOI18N
         btnPVDNavStats.setText("Statistiques");
-        btnPVDNavStats.setEnabled(false);
         btnPVDNavStats.setMaximumSize(new java.awt.Dimension(160, 37));
         btnPVDNavStats.setMinimumSize(new java.awt.Dimension(160, 37));
         btnPVDNavStats.setPreferredSize(new java.awt.Dimension(160, 37));
+        btnPVDNavStats.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPVDNavStatsMouseClicked(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 0, true)));
@@ -279,6 +283,14 @@ public class FrmPageVisiteurDefault extends javax.swing.JFrame {
         frm.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnDeconnexionMouseClicked
+
+    private void btnPVDNavStatsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPVDNavStatsMouseClicked
+        // TODO add your handling code here:
+        
+        FrmPageStatistique frm = new FrmPageStatistique();
+        frm.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnPVDNavStatsMouseClicked
 
     /**
      * @param args the command line arguments

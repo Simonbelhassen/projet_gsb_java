@@ -92,10 +92,14 @@ public class FrmPageRegionDefault extends javax.swing.JFrame {
 
         btnPRDNavStats.setFont(new java.awt.Font("Rockwell", 0, 24)); // NOI18N
         btnPRDNavStats.setText("Statistiques");
-        btnPRDNavStats.setEnabled(false);
         btnPRDNavStats.setMaximumSize(new java.awt.Dimension(160, 37));
         btnPRDNavStats.setMinimumSize(new java.awt.Dimension(160, 37));
         btnPRDNavStats.setPreferredSize(new java.awt.Dimension(160, 37));
+        btnPRDNavStats.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPRDNavStatsMouseClicked(evt);
+            }
+        });
 
         tblPRDReg.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -256,6 +260,15 @@ public class FrmPageRegionDefault extends javax.swing.JFrame {
         frm.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnDeconnexionMouseClicked
+
+    private void btnPRDNavStatsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPRDNavStatsMouseClicked
+        // TODO add your handling code here:
+        
+        FrmPageStatistique frm = new FrmPageStatistique();
+        frm.setVisible(true);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_btnPRDNavStatsMouseClicked
 
     /**
      * @param args the command line arguments
