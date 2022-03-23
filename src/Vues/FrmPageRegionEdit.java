@@ -173,7 +173,7 @@ public class FrmPageRegionEdit extends javax.swing.JFrame {
         fm = new FonctionsMetier();
         
         String codeRegion = txtPRECodeReg.getText();
-        String nomRegion = "reg_nom";
+        String nomRegion = txtPRENomReg.getText();
         String codeSecteur = cboPRENomSec.getSelectedItem().toString();
         String[] mot = codeSecteur.split(" -- ");
         

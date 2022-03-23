@@ -65,6 +65,11 @@ public class FrmPageAccueil extends javax.swing.JFrame
         txtPAId.setFont(new java.awt.Font("Rockwell", 0, 36)); // NOI18N
         txtPAId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPAId.setText("Identifiant");
+        txtPAId.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPAIdFocusGained(evt);
+            }
+        });
 
         titre3.setBackground(new java.awt.Color(255, 51, 51));
         titre3.setFont(new java.awt.Font("New Peninim MT", 1, 190)); // NOI18N
@@ -76,6 +81,16 @@ public class FrmPageAccueil extends javax.swing.JFrame
         txtPAMdp.setFont(new java.awt.Font("Rockwell", 0, 36)); // NOI18N
         txtPAMdp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPAMdp.setText("Mot de Passe");
+        txtPAMdp.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPAMdpFocusGained(evt);
+            }
+        });
+        txtPAMdp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPAMdpActionPerformed(evt);
+            }
+        });
 
         btnPAConnecter.setBackground(new java.awt.Color(0, 0, 0));
         btnPAConnecter.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
@@ -180,6 +195,20 @@ public class FrmPageAccueil extends javax.swing.JFrame
         ConnexionBDD cnx = new ConnexionBDD();
         fm = new FonctionsMetier();
     }//GEN-LAST:event_formWindowOpened
+
+    private void txtPAIdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPAIdFocusGained
+        // TODO add your handling code here:
+        txtPAId.setText("");
+    }//GEN-LAST:event_txtPAIdFocusGained
+
+    private void txtPAMdpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPAMdpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPAMdpActionPerformed
+
+    private void txtPAMdpFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPAMdpFocusGained
+        // TODO add your handling code here:
+        txtPAMdp.setText("");
+    }//GEN-LAST:event_txtPAMdpFocusGained
 
     /**
      * @param args the command line arguments

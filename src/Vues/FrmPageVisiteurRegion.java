@@ -235,14 +235,6 @@ public class FrmPageVisiteurRegion extends javax.swing.JFrame {
         }
         
         
-        int year = jCalendarPVRDate.getYearChooser().getYear();
-        int month = jCalendarPVRDate.getMonthChooser().getMonth() + 1;
-        int day = jCalendarPVRDate.getDayChooser().getDay();
-        
-        String formatDate = String.valueOf(year) + "-" + String.valueOf(month) + "-" + String.valueOf(day);
-        
-        
-        
     }//GEN-LAST:event_formWindowOpened
 
     private void btnPVRValiderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPVRValiderMouseClicked

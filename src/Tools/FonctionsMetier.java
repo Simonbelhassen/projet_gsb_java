@@ -250,17 +250,13 @@ public class FonctionsMetier implements IMetier
     public void ModifierRegion(int regCode, String regNom, int secCode) {
         try {
             Connection cnx = ConnexionBDD.getCnx();
-            PreparedStatement ps = cnx.prepareStatement("UPDATE region SET region.reg_code = "+regCode+", region.reg_nom = "+regNom+", region.sec_code = "+secCode+" WHERE reg_code = "+regCode+";");
+            PreparedStatement ps = cnx.prepareStatement("UPDATE region SET region.reg_code = "+regCode+", region.reg_nom = '"+regNom+"', region.sec_code = "+secCode+" WHERE region.reg_code = "+regCode+";");
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    @Override
-    public void ModifierSecteur(int visMatricule, String visNom, String visPrenom, String visAdresse, int visCodePostal, String visVille, String visDateEmbauche, int secCode, int labCode) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     @Override
     public Visiteur GetUnVisiteur(int uneMatricule) {
@@ -279,5 +275,18 @@ public class FonctionsMetier implements IMetier
         }
         return unVisiteur;
     }
+
+    @Override
+    public void ModifierVisiteur(int visMatricule, String visNom, String visPrenom, String visAdresse, int visCodePostal, String visVille, String visDateEmbauche, int secCode, int labCode) {
+        try {
+            Connection cnx = ConnexionBDD.getCnx();
+            PreparedStatement ps = cnx.prepareStatement("UPDATE visiteur SET visiteur.vis_matricule = '"+visMatricule+"', visiteur.vis_nom = '"+visNom+"', visiteur.vis_prenom = '"+visPrenom+"', visiteur.vis_adresse = '"+visAdresse+"', visiteur.vis_cp = "+visCodePostal+", visiteur.vis_ville = '"+visVille+"', visiteur.vis_dateembauche = '"+visDateEmbauche+"', visiteur.sec_code = '"+secCode+"', visiteur.lab_code = "+labCode+" WHERE visiteur.vis_matricule = "+visMatricule+";");
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+
     
 }

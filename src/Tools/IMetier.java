@@ -27,7 +27,7 @@ public interface IMetier
     public void InsererRegion(int regCode, String regNom, int secCode);
     public void ModifierRegion(int regCode, String regNom, int secCode);
     public void InsererVisiteur(int visMatricule, String visNom, String visPrenom, String visAdresse, int visCodePostal, String visVille, String visDateEmbauche, int secCode, int labCode);
-    public void ModifierSecteur(int visMatricule, String visNom, String visPrenom, String visAdresse, int visCodePostal, String visVille, String visDateEmbauche, int secCode, int labCode);
+    public void ModifierVisiteur(int visMatricule, String visNom, String visPrenom, String visAdresse, int visCodePostal, String visVille, String visDateEmbauche, int secCode, int labCode);
     public int GetLastRegCode();
     public int GetLastMatriculeCode();
     public String GetNomVille(int codePostal);

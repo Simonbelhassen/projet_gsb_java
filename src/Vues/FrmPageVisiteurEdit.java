@@ -140,12 +140,11 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
         txtPVECodeMatricule.setEditable(false);
         txtPVECodeMatricule.setBackground(new java.awt.Color(153, 153, 153));
 
-        jCalendarPVEDateEmbauche.setEnabled(false);
+        jCalendarPVEDateEmbauche.setBackground(new java.awt.Color(204, 204, 255));
         jCalendarPVEDateEmbauche.setFont(new java.awt.Font("Segoe UI", 0, 9)); // NOI18N
 
         txtPVECodePostal.setEditable(false);
         txtPVECodePostal.setBackground(new java.awt.Color(153, 153, 153));
-        txtPVECodePostal.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -182,23 +181,28 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtPVEPrenom, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCalendarPVEDateEmbauche, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(21, 21, 21)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
-                                            .addComponent(cboPVENomSec, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(43, 43, 43)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(cboPVENomLab, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addComponent(btnPVESauvegarderModifs, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(58, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jCalendarPVEDateEmbauche, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboPVENomSec, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(cboPVENomLab, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnPVESauvegarderModifs, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(67, 67, 67))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,9 +243,9 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboPVENomLab, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cboPVENomSec, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cboPVENomSec, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboPVENomLab, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(68, 68, 68)
                         .addComponent(btnPVESauvegarderModifs, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(127, 127, 127))
@@ -284,6 +288,8 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
         
         Visiteur unVisiteur = fm.GetUnVisiteur(Integer.parseInt(numMatricule));
         
+     
+        
         if(unVisiteur == null)
         {
             JOptionPane.showMessageDialog(this, "Identifiants incorrects", "INFOS", JOptionPane.INFORMATION_MESSAGE);
@@ -291,13 +297,11 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
         else
         {
             JOptionPane.showMessageDialog(this, "OK", "INFOS", JOptionPane.INFORMATION_MESSAGE);
-            txtPVENom.setText(fm.GetUnVisiteur(Integer.parseInt(numMatricule)).getVisNom().toString());
-//            txtPVENom.setText(fm.GetUnVisiteur(Integer.parseInt(numMatricule)).getVisNom().toString());
-            txtPVEPrenom.setText(fm.GetUnVisiteur(Integer.parseInt(numMatricule)).getVisPrenom().toString());
-//            txtPVECodePostal.setText(fm.GetUnVisiteur(Integer.parseInt(numMatricule)).getVisCodePostal());
-            txtPVEAdresse.setText(fm.GetUnVisiteur(Integer.parseInt(numMatricule)).getVisAdresse().toString());
-//            txtPVECodePostal.setText(fm.GetUnVisiteur(Integer.parseInt(numMatricule)).getVisCodePostal().toString());
-            txtPVEVille.setText(fm.GetUnVisiteur(Integer.parseInt(numMatricule)).getVisVille()); 
+            txtPVENom.setText(unVisiteur.getVisNom());
+            txtPVEPrenom.setText(unVisiteur.getVisPrenom());
+            txtPVEAdresse.setText(unVisiteur.getVisAdresse());
+            txtPVECodePostal.setText(String.valueOf(unVisiteur.getVisCodePostal()));
+            txtPVEVille.setText(unVisiteur.getVisVille()); 
         }
         
         
@@ -324,17 +328,17 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
         
         String formatDate = String.valueOf(year) + "-" + String.valueOf(month) + "-" + String.valueOf(day);
         
-        for (Secteur sec : fm.GetAllSecteurs()) 
-        {
-            String b = sec.getSecCode() + " -- " + sec.getSecNom();
-            cboPVENomSec.addItem(b);
-        }
-        
-        for (Laboratoire lab : fm.GetAllLaboratoires()) 
-        {
-            String b = lab.getLabCode() + " -- " + lab.getLabNom();
-            cboPVENomLab.addItem(b);
-        }
+//        for (Secteur sec : fm.GetAllSecteurs()) 
+//        {
+//            String b = sec.getSecCode() + " -- " + sec.getSecNom();
+//            cboPVENomSec.addItem(b);
+//        }
+//        
+//        for (Laboratoire lab : fm.GetAllLaboratoires()) 
+//        {
+//            String b = lab.getLabCode() + " -- " + lab.getLabNom();
+//            cboPVENomLab.addItem(b);
+//        }
         
         String aa = cboPVENomSec.getSelectedItem().toString();
         String[] sec = aa.split(" -- ");
@@ -342,10 +346,19 @@ public class FrmPageVisiteurEdit extends javax.swing.JFrame {
         String bb = cboPVENomLab.getSelectedItem().toString();
         String[] lab = bb.split(" -- ");
         
-//        fm.ModifierRegion(Integer.parseInt(codeRegion), nomRegion, Integer.parseInt(mot[0]));
-        fm.ModifierSecteur(Integer.parseInt(matricule), nom, prenom, adresse, Integer.parseInt(codePostal), ville, formatDate, Integer.parseInt(sec[0]), Integer.parseInt(lab[0]));
-        JOptionPane.showMessageDialog(this, "La requette a marcher. Donc va verifier la bdd. OK");
+//        JOptionPane.showMessageDialog(this, Integer.parseInt(matricule));
+//        JOptionPane.showMessageDialog(this, nom);
+//        JOptionPane.showMessageDialog(this, prenom);
+//        JOptionPane.showMessageDialog(this, adresse);
+//        JOptionPane.showMessageDialog(this, Integer.parseInt(codePostal));
+//        JOptionPane.showMessageDialog(this, ville);
+//        JOptionPane.showMessageDialog(this, formatDate);
+//        JOptionPane.showMessageDialog(this, Integer.parseInt(sec[0]));
+//        JOptionPane.showMessageDialog(this, Integer.parseInt(lab[0]));
         
+        fm.ModifierVisiteur(Integer.parseInt(matricule), nom, prenom, adresse, Integer.parseInt(codePostal), ville, formatDate, Integer.parseInt(sec[0]), Integer.parseInt(lab[0]));
+        JOptionPane.showMessageDialog(this, "La requette a marcher. Donc va verifier la bdd. OK");
+       
         FrmPageVisiteurDefault frm = new FrmPageVisiteurDefault();
         frm.setVisible(true);
         this.setVisible(false);

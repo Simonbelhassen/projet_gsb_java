@@ -96,31 +96,38 @@
                               </Group>
                               <Component id="jSeparator1" alignment="0" min="-2" pref="706" max="-2" attributes="0"/>
                               <Component id="jSeparator3" alignment="0" min="-2" pref="706" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel8" min="-2" pref="225" max="-2" attributes="0"/>
-                                      <Component id="jCalendarPVEDateEmbauche" min="-2" pref="259" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jLabel9" pref="161" max="32767" attributes="0"/>
-                                              <Component id="cboPVENomSec" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jLabel7" max="32767" attributes="0"/>
-                                              <Component id="cboPVENomLab" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Component id="btnPVESauvegarderModifs" min="-2" pref="399" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
                           </Group>
                           <EmptySpace pref="58" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="jLabel8" min="-2" pref="225" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jCalendarPVEDateEmbauche" min="-2" pref="317" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jLabel9" max="32767" attributes="0"/>
+                              <Component id="cboPVENomSec" min="-2" pref="161" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboPVENomLab" min="-2" pref="189" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="btnPVESauvegarderModifs" min="-2" pref="378" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -171,9 +178,9 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cboPVENomLab" alignment="1" max="32767" attributes="0"/>
-                              <Component id="cboPVENomSec" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cboPVENomSec" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="cboPVENomLab" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                           <Component id="btnPVESauvegarderModifs" min="-2" pref="56" max="-2" attributes="0"/>
@@ -359,7 +366,9 @@
         </Component>
         <Component class="com.toedter.calendar.JCalendar" name="jCalendarPVEDateEmbauche">
           <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="cc" red="cc" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="9" style="0"/>
             </Property>
@@ -371,7 +380,6 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
-            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
       </SubComponents>

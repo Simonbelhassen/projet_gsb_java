@@ -71,6 +71,11 @@ public class FrmPageStatistique extends javax.swing.JFrame {
         btnPRDNavReg.setFont(new java.awt.Font("Rockwell", 0, 24)); // NOI18N
         btnPRDNavReg.setText("Régions");
         btnPRDNavReg.setPreferredSize(new java.awt.Dimension(160, 37));
+        btnPRDNavReg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPRDNavRegMouseClicked(evt);
+            }
+        });
 
         btnPRDNavStats.setBackground(new java.awt.Color(255, 204, 0));
         btnPRDNavStats.setFont(new java.awt.Font("Rockwell", 0, 24)); // NOI18N
@@ -153,6 +158,14 @@ public class FrmPageStatistique extends javax.swing.JFrame {
         frm.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnDeconnexionMouseClicked
+
+    private void btnPRDNavRegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPRDNavRegMouseClicked
+        // TODO add your handling code here:
+        
+        FrmPageRegionDefault frm = new FrmPageRegionDefault();
+        frm.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnPRDNavRegMouseClicked
 
     /**
      * @param args the command line arguments
